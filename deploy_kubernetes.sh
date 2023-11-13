@@ -40,10 +40,6 @@ export NODE_PORT_SHIPPING=$(kubectl get service -n ecommerce-app shipping-servic
 
 # Setting Up Istio
 kubectl label namespace default istio-injection=enable
-export INGRESS_HOST=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
-export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].port}')
-export SECURE_INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="https")].port}')
-export GATEWAY_URL=$INGRESS_HOST
 
 echo "Order-Service NodePort on http://$MINIKUBE_IP:$NODE_PORT_ORDER"
 echo "Shipping-Service NodePort on http://$MINIKUBE_IP:$NODE_PORT_SHIPPING"
