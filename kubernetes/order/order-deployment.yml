@@ -28,7 +28,13 @@ spec:
           #name the container
         - name: order-service
           #pull the image from github package
-          image: docker pull ghcr.io/mueiya/dicoding-order-service:latest
+          image: ghcr.io/mueiya/dicoding-order-service:latest
           ports:
-              #exposed port for container
+            #exposed port for container
             - containerPort: 3000
+          env:
+            - name: PORT
+              value: "3000"
+            - name: AMQP_URL
+              #set as amqp://<username>.<password>@rabbitmq:5672, 
+              value: "amqp://mueiya:secretpassword@my-rabbitmq.default.svc.cluster.local:5672"

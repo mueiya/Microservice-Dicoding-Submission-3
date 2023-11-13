@@ -1,0 +1,20 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
+metadata:
+  name: production-rabbitmqcluster
+spec:
+  replicas: 1
+  resources:
+    #set limit for resource
+    limits:
+      cpu: 1
+      memory: 2Gi
+  rabbitmq:
+          additionalConfig: |
+                  log.console.level = info
+                  channel_max = 1700
+                  default_user= mueiya 
+                  default_pass = supersecretpassword
+                  default_user_tags.administrator = true
+  service:
+    type: LoadBalancer
