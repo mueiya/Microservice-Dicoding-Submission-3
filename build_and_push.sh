@@ -3,7 +3,7 @@
 # 1. Perintah untuk membuat Docker image dari Dockerfile.
 # Baris ini menggunakan perintah docker build untuk membuat Docker image 
 # dari Dockerfile yang terdapat di direktori saat ini (.). 
-# Image ini kemudian diberi tag karsajobs:latest.
+# Image ini kemudian diberi tag dicoding-order-service:latest.
 docker build -t dicoding-order-service:latest .
 
 # ubah tag dan nama, sesuai penamaan github package
